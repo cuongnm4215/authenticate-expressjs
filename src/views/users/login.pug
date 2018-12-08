@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container
+        .col-md-6.offset-md-3.login-form
+            .card
+                .card-header
+                    p.login-title Login
+                .card-body
+                    form
+                        .form-group
+                            input(type="text" name="username" autocomplete="off" placeholder="Username" class="form-control")
+                        .form-group
+                            input(type="password", placeholder="Password", class="form-control")
+                        .form-check
+                            input(type="checkbox", placeholder="Password", class="form-check-input")
+                            label.form-check-label Remember me
+                        button(class="btn btn-block btn-success btn-md btn-login", type="button") Submit
+                    .help-area
+                        p.forget-password <a href="/forget-password">Forget password?</a>
+                        p.dont-have-account Don't have an account? <a href="/register">Register now</a>

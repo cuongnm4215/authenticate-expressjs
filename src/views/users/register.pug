@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .container
+        .col-md-6.offset-md-3.login-form
+            .card
+                .card-header
+                    p.login-title Register
+                .card-body
+                    form(action="/register" method="post")
+                        .form-group
+                            input(type="text" name="username" autocomplete="off" placeholder="Username" class="form-control")
+                        .form-group
+                            input(type="password" name="password" placeholder="Password" class="form-control")
+                        .form-group
+                            input(type="password" name="confirm-password" placeholder="Confirm password" class="form-control")
+                        button(class="btn btn-block btn-success btn-md btn-login", type="submit") Submit

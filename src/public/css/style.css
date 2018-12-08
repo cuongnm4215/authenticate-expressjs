@@ -1,0 +1,44 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, serif;
+}
+
+.login-form {
+    animation: login-form 500ms ease-out forwards;
+}
+
+@keyframes login-form {
+    0% {
+        opacity: 0;
+        margin-top: 50px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 100px;
+    }
+}
+.login-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-login {
+    margin-top: 20px;
+}
+
+.forget-password {
+    float: left;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.dont-have-account {
+    float: right;
+    font-size: 12px;
+    margin-top: 10px;
+}
