@@ -25,19 +25,22 @@ html, body {
     font-weight: 700;
     margin: 0;
     padding: 0;
+    letter-spacing: 5px;
 }
 
 .btn-login {
     margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
-.forget-password {
+.fl-left {
     float: left;
     font-size: 12px;
     margin-top: 10px;
 }
 
-.dont-have-account {
+.fl-right {
     float: right;
     font-size: 12px;
     margin-top: 10px;

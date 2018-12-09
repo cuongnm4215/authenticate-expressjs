@@ -7,11 +7,13 @@ block content
                 .card-header
                     p.login-title Register
                 .card-body
-                    form(action="/register" method="post")
+                    form(action="/register" method="post" id="register")
                         .form-group
-                            input(type="text" name="username" autocomplete="off" placeholder="Username" class="form-control")
+                            input(type="text" id="username" name="username" autocomplete="off" placeholder="Username" class="form-control")
                         .form-group
-                            input(type="password" name="password" placeholder="Password" class="form-control")
+                            input(type="password" id="password" name="password" placeholder="Password" class="form-control")
                         .form-group
-                            input(type="password" name="confirm-password" placeholder="Confirm password" class="form-control")
-                        button(class="btn btn-block btn-success btn-md btn-login", type="submit") Submit
+                            input(type="password" id="confirm" name="confirm" placeholder="Confirm password" class="form-control")
+                        button(class="btn btn-block btn-success btn-md btn-login", type="submit") Register
+                    .help-area
+                        p.fl-right Already have an account? <a href="/login">Sign in</a>

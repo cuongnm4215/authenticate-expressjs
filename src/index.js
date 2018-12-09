@@ -1,18 +1,30 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import favicon from 'serve-favicon';
+import mongoose from 'mongoose';
 import path from 'path';
 
-import authenticate from './routes/authenticate';
+import users from './routes/users';
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
+const uri = `mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@ds229474.mlab.com:29474/authenticate-express`;
+mongoose.connect(uri, { useNewUrlParser: true })
+    .then(() => console.log('Connected database'))
+    .catch(() => console.log('Failed to connect database'));
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public/img/logo.png')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use('/', authenticate);
+app.use('/', users);
 
 app.listen(port, function() {
     console.log(`Application is running on http://localhost:${port}`);

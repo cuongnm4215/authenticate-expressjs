@@ -7,15 +7,15 @@ block content
                 .card-header
                     p.login-title Login
                 .card-body
-                    form
+                    form(action="/login" method="post")
                         .form-group
                             input(type="text" name="username" autocomplete="off" placeholder="Username" class="form-control")
                         .form-group
-                            input(type="password", placeholder="Password", class="form-control")
+                            input(type="password" name="password" placeholder="Password" class="form-control")
                         .form-check
-                            input(type="checkbox", placeholder="Password", class="form-check-input")
+                            input(type="checkbox" class="form-check-input")
                             label.form-check-label Remember me
-                        button(class="btn btn-block btn-success btn-md btn-login", type="button") Submit
+                        button(class="btn btn-block btn-success btn-md btn-login", type="submit") Login
                     .help-area
-                        p.forget-password <a href="/forget-password">Forget password?</a>
-                        p.dont-have-account Don't have an account? <a href="/register">Register now</a>
+                        p.fl-left <a href="/forget-password">Forget password?</a>
+                        p.fl-right Don't have an account? <a href="/register">Register now</a>
