@@ -11,8 +11,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-const uri = `mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@ds229474.mlab.com:29474/authenticate-express`;
-mongoose.connect(uri, { useNewUrlParser: true })
+const uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds229474.mlab.com:29474/authenticate-express`;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected database'))
     .catch(() => console.log('Failed to connect database'));
 

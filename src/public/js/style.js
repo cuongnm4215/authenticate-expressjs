@@ -14,5 +14,7 @@ $('#register').validate({
             required: 'Field is required',
             equalTo: 'Password do not match'
         }
-    }
+    },
+    errorClass: 'is-invalid',
+    validClass: 'is-valid',
 });
