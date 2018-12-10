@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import favicon from 'serve-favicon';
 import mongoose from 'mongoose';
+import session from 'express-session';
 import path from 'path';
 
 import users from './routes/users';
@@ -18,6 +19,16 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 60000,
+    },
+    name: '_ssid'
+}));
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img/logo.png')));
