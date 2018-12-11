@@ -21,6 +21,10 @@ schema.methods.setPassword = function setPassword(password) {
     this.password = bcryptjs.hashSync(password, 10);
 }
 
+schema.methods.isValidPassword = function isValidPassword(password) {
+    return bcryptjs.compareSync(password, this.password);
+}
+
 schema.plugin(uniqueValidator, {message: 'Username is already taken'});
 
 const User = mongoose.model('User', schema);

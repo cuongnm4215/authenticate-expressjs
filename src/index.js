@@ -5,6 +5,9 @@ import favicon from 'serve-favicon';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import path from 'path';
+import connectMongo from 'connect-mongo';
+import passport from 'passport';
+import './configs/passport';
 
 import users from './routes/users';
 
@@ -17,18 +20,23 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected database'))
     .catch(() => console.log('Failed to connect database'));
 
+const MongoStore = connectMongo(session);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        maxAge: 60000,
+        maxAge: 15 * 60 * 1000,
     },
-    name: '_ssid'
+    name: '_ssid',
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img/logo.png')));
